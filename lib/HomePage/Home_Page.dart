@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:forceindia/Widget/force_header.dart';
-import 'package:forceindia/Widget/force_home_screen.dart';
+import 'package:forceindia/Screens/dekstop_screen.dart';
+import 'package:forceindia/Screens/mobile_screen.dart';
+import 'package:forceindia/responsive_layout.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,14 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:SingleChildScrollView(
-        child: Column(
-          children: [
-            ForceHeader(),
-            ForceHomeSection(),
-          ],
-        ),
-      ),
+      body:ResponsiveLayout(mobileView:MobileScreen(),dekstopView:DesktopScreen()),
     );
   }
 }
