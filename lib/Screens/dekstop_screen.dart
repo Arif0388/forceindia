@@ -13,6 +13,11 @@ class DesktopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const headingColor = Color(0xFF8B0000);
+    const textColor = Color(0xFF222222);
+    const backgroundColor = Color(0xFFFFF8F3);
+
+
     final size = MediaQuery.sizeOf(context);
 
     final List<Map<String, String>> newsList = [
@@ -82,10 +87,22 @@ class DesktopScreen extends StatelessWidget {
       },
     ];
 
+    const headingColor2 = Color(0xFF8B0000);
+    const backgroundColor2 = Color(0xFFFFF8F3);
+
+    const backgroundColor3 = Colors.black;
+    const textColor3 = Colors.white;
+
+    final books = [
+      'https://media.istockphoto.com/id/162833245/photo/blank-book.jpg?s=612x612&w=0&k=20&c=7e-A5MDfHe0hGY2tO3WI_MgrGQ5HWgigMEVkKk1bR14=',
+      'https://www.swiss-miss.com/wp-content/uploads/2014/02/jpeg-3-480x480.jpg',
+      'https://media.istockphoto.com/id/1464620762/vector/book-with-closed-hardcover.jpg?s=612x612&w=0&k=20&c=n1HMvjDBbTVtVYHXoTpdUHtXTpPSublbwdO-K99B9SQ=',
+      'https://www.shutterstock.com/image-photo/ancient-book-isolated-on-white-260nw-43893448.jpg',
+    ];
+
     return Column(
       children: [
         const ForceHeader(),
-
         Expanded(
           child: Row(
             children: [
@@ -651,7 +668,6 @@ class DesktopScreen extends StatelessWidget {
                   ),
                 ),
               ),
-
               Expanded(
                 flex: 1,
                 child: Container(
@@ -660,23 +676,231 @@ class DesktopScreen extends StatelessWidget {
                     thumbVisibility: true,
                     child: SingleChildScrollView(
                       child: Column(
-                        children: List.generate(
-                          30,
-                              (index) => Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Container(
-                              height: 80,
-                              color: index.isEven
-                                  ? Colors.orange.shade200
-                                  : Colors.orange.shade300,
-                              child: Center(
-                                  child: Text(
-                                    'Priyesh Sir ${index + 1}',
-                                    style: const TextStyle(color: Colors.black),
-                                  )),
+                        children:[
+                          Text('New Print Audition'),
+                          SizedBox(height:15),
+                          Image.network('assets/images/1.jpg',height:250),
+                          SizedBox(height:15),
+                          Image.network('assets/images/2.jpeg',height:250),
+                          SizedBox(height:15),
+                          Container(
+                            margin:EdgeInsets.all(10),
+                            padding:EdgeInsets.all(5),
+                            width:size.width,
+                            height:200,
+                            decoration:BoxDecoration(
+                              borderRadius:BorderRadius.circular(15),
+                              color:Colors.red
+                            ),
+                            child:Column(
+                              children: [
+                                Text('There is truth; and there is perspective.FORCE brings you both, so that you get the complete picture. With incisive reports on the indigenous and global defence industry in India, FORCE provides an interface between the user and the supplier',style:GoogleFonts.poppins(fontSize:12,color:Colors.white)),
+                                SizedBox(height:10),
+                                Container(
+                                  width:size.width,
+                                  height:40,
+                                  decoration:BoxDecoration(
+                                    borderRadius:BorderRadius.circular(15),
+                                    color:Colors.white,
+                                  ),
+                                  child:Center(
+                                    child: Column(
+                                      children: [
+                                        Text('ADVERTISE',style:GoogleFonts.poppins(color:Colors.red)),
+                                        Text('WITH US',style:GoogleFonts.poppins(color:Colors.red)),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                        color: backgroundColor,
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildSectionTitle("Old Print Editions", headingColor),
+                              const SizedBox(height: 8),
+                              _buildLinkList([
+                                "September 2025 (16)",
+                                "August 2025 (14)",
+                                "July 2025 (15)",
+                                "June 2025 (12)",
+                                "May 2025 (16)",
+                                "April 2025 (17)",
+                                "March 2025 (21)",
+                                "February 2025 (22)",
+                                "January 2025 (22)",
+                              ], textColor),
+
+                              const SizedBox(height: 20),
+                              _buildSectionTitle("Archives", headingColor),
+                              const SizedBox(height: 8),
+                              _buildLinkList([
+                                "2024",
+                                "2023",
+                                "2022",
+                                "2021",
+                                "2020",
+                                "2019",
+                                "2018",
+                                "2017",
+                              ], textColor),
+
+                              const SizedBox(height: 20),
+                              _buildSectionTitle("Categories", headingColor),
+                              const SizedBox(height: 8),
+                              _buildLinkList([
+                                "Industry News (167)",
+                                "Interview (118)",
+                                "Service News (173)",
+                              ], textColor),
+                            ],
+                          ),
+                        ),
+                      ),
+                          Container(
+                        color: backgroundColor2,
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "In Stores",
+                              style: GoogleFonts.ptSerif(
+                                textStyle: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: headingColor2,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+
+                            GridView.builder(
+                              itemCount: books.length,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 16,
+                                mainAxisSpacing: 16,
+                                childAspectRatio: 0.68,
+                              ),
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black12.withOpacity(0.1),
+                                        blurRadius: 4,
+                                        offset: const Offset(1, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child: Image.network(
+                                      books[index],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                          Center(
+                        child: Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.all(16),
+                          padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                          decoration: BoxDecoration(
+                            color: backgroundColor3,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Text(
+                            "Please bear with us for a few days.\nWe are making ourselves better",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.ptSerif(
+                              textStyle: const TextStyle(
+                                color: textColor3,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                height: 1.4,
+                              ),
                             ),
                           ),
                         ),
+                      ),
+                          Container(
+                        width: 340,
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Colors.red, // container color red
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'Read FORCE to see what makes the difference.',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              'FORCE puts news into perspective.',
+                              style: TextStyle(
+                                color: Colors.white70,
+                                fontSize: 14,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white, // white button
+                                  foregroundColor: Colors.red,
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  elevation: 2,
+                                ),
+                                child: const Text(
+                                  'Subscribe now',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                        ],
                       ),
                     ),
                   ),
@@ -763,4 +987,74 @@ class DesktopScreen extends StatelessWidget {
 }
 
 
+Widget buildLinkList(List<String> items) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: items
+        .map(
+          (e) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            alignment: Alignment.centerLeft,
+          ),
+          onPressed: () {
 
+          },
+          child: Text(
+            e,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.black87,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ),
+      ),
+    )
+        .toList(),
+  );
+}
+
+Widget _buildSectionTitle(String title, Color color) {
+return Text(
+title,
+style: GoogleFonts.ptSerif(
+textStyle: TextStyle(
+fontSize: 16,
+fontWeight: FontWeight.bold,
+color: color,
+),
+),
+);
+}
+
+Widget _buildLinkList(List<String> items, Color color) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: items.map((e) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 3),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+            alignment: Alignment.centerLeft,
+          ),
+          onPressed: () {
+          },
+          child: Text(
+            e,
+            style: GoogleFonts.ptSerif(
+              textStyle: TextStyle(
+                fontSize: 14,
+                color: color,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+        ),
+      );
+    }).toList(),
+  );
+}
